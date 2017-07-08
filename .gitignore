@@ -1,0 +1,4 @@
+arduino/*
+arduino/
+__pycache__/
+build/

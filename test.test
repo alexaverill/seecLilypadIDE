@@ -1,0 +1,8 @@
+    USE TEMP
+ Use LeD1
+ temp ON
+            WAIT
+led1 30%
+led1 100%
+led1 1%
+led1 10000%
