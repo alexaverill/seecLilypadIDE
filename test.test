@@ -6,3 +6,9 @@ led1 30%
 led1 100%
 led1 1%
 led1 10000%
+if(Button==1){
+	led2 on
+
+}else{
+	led2 off
+}
