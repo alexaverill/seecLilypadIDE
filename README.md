@@ -8,4 +8,17 @@ Found here: https://www.arduino.cc/en/Main/OldSoftwareReleases#previous
 
 
 #Language Features
-
+#Examples:
+Light LED and play an A on the buzzer when button pressed
+USE BUTTON
+USE LED1
+USE BUZZER
+IF(BUTTON == 0){
+        LED1 ON
+        BUZZER A
+        WAIT 150
+}ELSE{
+        LED1 OFF
+        BUZZER OFF
+        WAIT 150
+}
