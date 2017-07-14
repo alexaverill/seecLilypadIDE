@@ -2,11 +2,14 @@ import treeClass
 import os
 class interpClass:
     #definitions for pins and sensor types
-    pinDict = {'LED1':5,'LED2':6,'LED3':'A2','LED4':'A4','LED5':'A3','BUZZER':7,'MOTOR':3,'BUTTON':"A5",'SLIDE':2,'TEMP':"A2",'LIGHT':"A6"}
+    pinDict = {'LED1':5,'LED2':6,'LED3':'A2','LED4':'A4','LED5':'A3','BUZZER':7,'MOTOR':3,'BUTTON':"A5",'SLIDE':2,'TEMP':"A1",'LIGHT':"A6"}
     keyWords ={"USE","WAIT","IF","WHILE"}
-    analogSensors = {'TEMP',"LIGHT"} #use to reference the right sensors. If sensors are here then search through pinDict
+    analogSensors = {'TEMP',"LIGHT","BUTTON"} #use to reference the right sensors. If sensors are here then search through pinDict
+    #button 0 is pressed anything else is off
+    #temperature room is around 144
+    #light can be controled with finger
     tones = {"C":1046,"D":1175,"E":1319,"F":1397,"G":1568,"A":1760,"B":1976,"C1":3092,"D1":2349}
-    digitalSensors = {"BUTTON","SLIDE"}
+    digitalSensors = {"SLIDE"}
     defaultDelay = 1000 #default rate for the WAIT command. 
     digitalStr = "digitalWrite("
     analogStr = "analogWrite("
@@ -69,7 +72,12 @@ class interpClass:
         for element in strArray:
             if(len(element)>0):
                 if(element in self.pinDict):
-                    finalArray.append(self.pinDict[element])
+                    if(element in self.analogSensors):
+                        finalArray.append("analogRead("+self.pinDict[element]+")")
+                    elif(element in self.digitalSensors):
+                        finalArray.append("digitalRead("+self.pinDict[element]+")")
+                    else:
+                        finalArray.append(self.pinDict[element])
                 else:
                     finalArray.append(element)
         output=''
@@ -152,7 +160,7 @@ class interpClass:
                         self.instructions.append("noTone("+str(self.pinDict[parsedArray[0]])+");")
                     elif(parsedArray[1] in self.tones):
                         self.instructions.append("tone("+str(self.pinDict[parsedArray[0]])+","+str(self.tones[parsedArray[1]])+");")
-            if(("ON" in line or "OFF" in line) and "BUZZER" not in line):
+            if((("ON" in line) or ("OFF" in line)) and ("BUZZER" not in line) and ("IF" not in line)and ("WHILE" not in line) and ("USE" not in line) and ("WAIT" not in line)):
                 #the line should look like "LED1 ON" or "MOTOR ON" 
                 #call parseLine function to get back an array that should have ["LED1","ON"]
                 # the parseLine will also remove \tLED1 in the event that its a nested
@@ -226,7 +234,8 @@ class interpClass:
         os.system('echo "" > ./temp/temp.ino')
         #now write to the temp file for compilation
         self.writeFile(file)
-        arduinoString = '/usr/share/lilypadide/arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB0 --upload '
+        #arduinoString = '/usr/share/lilypadide/arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB0 --upload '
+        arduinoString = 'arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB1 --upload '
         return os.system(arduinoString+" ./temp/temp.ino")
 
 

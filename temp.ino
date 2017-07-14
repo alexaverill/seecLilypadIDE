@@ -100,3 +100,53 @@ analogWrite(5,255);
 analogWrite(5,2);
 analogWrite(5,255);
 }
+void setup(){
+pinMode(A2,INPUT);
+pinMode(5,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+delay(1000);
+analogWrite(5,76);
+analogWrite(5,255);
+analogWrite(5,2);
+analogWrite(5,255);
+}
+void setup(){
+pinMode(A2,INPUT);
+pinMode(5,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+delay(1000);
+analogWrite(5,76);
+analogWrite(5,255);
+analogWrite(5,2);
+analogWrite(5,255);
+if(A5==1)
+{
+digitalWrite(6,HIGH);
+}
+else{
+digitalWrite(6,LOW);
+}
+}
+void setup(){
+pinMode(A2,INPUT);
+pinMode(5,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+delay(1000);
+analogWrite(5,76);
+analogWrite(5,255);
+analogWrite(5,2);
+analogWrite(5,255);
+if(analogRead(A5)==1)
+{
+digitalWrite(6,HIGH);
+}
+else{
+digitalWrite(6,LOW);
+}
+}
