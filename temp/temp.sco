@@ -1,2 +1,5 @@
-use temp
-a = temp/5
+USE LED4
+LED4 ON
+WAIT 250
+LED4 OFF
+WAIT 250

@@ -235,7 +235,11 @@ class interpClass:
         #now write to the temp file for compilation
         self.writeFile(file)
         #arduinoString = '/usr/share/lilypadide/arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB0 --upload '
-        arduinoString = 'arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB1 --upload '
-        return os.system(arduinoString+" ./temp/temp.ino")
+        #arduinoString = 'arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB1 --upload '
+        attempt = os.system('cd ./temp/; make;make upload')
+        if(attempt == 1):
+            attempt = attempt = os.system('cd ./temp/; make usb1;make upload')
+        return attempt
+        #return os.system(arduinoString+" ./temp/temp.ino")
 
 
