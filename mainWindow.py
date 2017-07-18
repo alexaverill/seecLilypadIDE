@@ -25,6 +25,38 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
+        self.gridLayout_4 = QtWidgets.QGridLayout()
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.saveBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.saveBtn.setObjectName("saveBtn")
+        self.gridLayout_4.addWidget(self.saveBtn, 1, 2, 1, 1)
+        self.runBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.runBtn.setObjectName("runBtn")
+        self.gridLayout_4.addWidget(self.runBtn, 1, 4, 1, 1)
+        self.openBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.openBtn.setObjectName("openBtn")
+        self.gridLayout_4.addWidget(self.openBtn, 1, 0, 1, 1)
+        self.codeStatus = QtWidgets.QTextBrowser(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.codeStatus.sizePolicy().hasHeightForWidth())
+        self.codeStatus.setSizePolicy(sizePolicy)
+        self.codeStatus.setMaximumSize(QtCore.QSize(300, 30))
+        self.codeStatus.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.codeStatus.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.codeStatus.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
+        self.codeStatus.setObjectName("codeStatus")
+        self.gridLayout_4.addWidget(self.codeStatus, 1, 3, 1, 1)
+        self.gridLayout.addLayout(self.gridLayout_4, 0, 2, 1, 1)
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
+        self.textEdit.setSizePolicy(sizePolicy)
+        self.textEdit.setObjectName("textEdit")
+        self.gridLayout.addWidget(self.textEdit, 1, 1, 1, 2)
         self.toolBox = QtWidgets.QToolBox(self.centralwidget)
         self.toolBox.setFocusPolicy(QtCore.Qt.NoFocus)
         self.toolBox.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
@@ -108,38 +140,6 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName("pushButton")
         self.toolBox.addItem(self.generalTab, "")
         self.gridLayout.addWidget(self.toolBox, 1, 0, 1, 1)
-        self.gridLayout_4 = QtWidgets.QGridLayout()
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.saveBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.saveBtn.setObjectName("saveBtn")
-        self.gridLayout_4.addWidget(self.saveBtn, 1, 2, 1, 1)
-        self.runBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.runBtn.setObjectName("runBtn")
-        self.gridLayout_4.addWidget(self.runBtn, 1, 4, 1, 1)
-        self.openBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.openBtn.setObjectName("openBtn")
-        self.gridLayout_4.addWidget(self.openBtn, 1, 0, 1, 1)
-        self.codeStatus = QtWidgets.QTextBrowser(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.codeStatus.sizePolicy().hasHeightForWidth())
-        self.codeStatus.setSizePolicy(sizePolicy)
-        self.codeStatus.setMaximumSize(QtCore.QSize(300, 30))
-        self.codeStatus.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.codeStatus.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.codeStatus.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
-        self.codeStatus.setObjectName("codeStatus")
-        self.gridLayout_4.addWidget(self.codeStatus, 1, 3, 1, 1)
-        self.gridLayout.addLayout(self.gridLayout_4, 0, 2, 1, 1)
-        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
-        self.textEdit.setSizePolicy(sizePolicy)
-        self.textEdit.setObjectName("textEdit")
-        self.gridLayout.addWidget(self.textEdit, 1, 1, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1016, 22))
@@ -168,6 +168,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Lilypad IDE"))
+        self.saveBtn.setText(_translate("MainWindow", "Save"))
+        self.runBtn.setText(_translate("MainWindow", "Run"))
+        self.openBtn.setText(_translate("MainWindow", "Open"))
         self.toolBox.setToolTip(_translate("MainWindow", "Click Me!"))
         self.generalTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -234,7 +237,6 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Available Actions:</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    ON</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    OFF</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    [0-100]%</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Examples:</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Turn LED1 on:</p>\n"
@@ -263,7 +265,6 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Available Actions:</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    ON</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    OFF</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    [0-100]%</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Examples:</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Turn the Motor on:</p>\n"
@@ -342,9 +343,6 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">It includes code examples and background information to make getting started easier. There is an associated guide book that will have more detailed instructions and project ideas and help.</p></body></html>"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.generalTab), _translate("MainWindow", "Language Help"))
-        self.saveBtn.setText(_translate("MainWindow", "Save"))
-        self.runBtn.setText(_translate("MainWindow", "Run"))
-        self.openBtn.setText(_translate("MainWindow", "Open"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionSave.setText(_translate("MainWindow", "Save"))

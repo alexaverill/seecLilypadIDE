@@ -150,3 +150,77 @@ else{
 digitalWrite(6,LOW);
 }
 }
+void setup(){
+pinMode(A1,INPUT);
+pinMode(5,OUTPUT);
+}
+void loop(){
+digitalWrite(A1,HIGH);
+delay(1000);
+analogWrite(5,76);
+analogWrite(5,255);
+analogWrite(5,2);
+analogWrite(5,255);
+if(analogRead(A5)==1)
+{
+digitalWrite(6,HIGH);
+}
+else{
+digitalWrite(6,LOW);
+}
+}
+void setup(){
+}
+void loop(){
+while(X<10)
+{
+}
+}
+void setup(){
+}
+void loop(){
+while(1==1)
+{
+}
+}
+float X=0;
+void setup(){
+}
+void loop(){
+while(1==1)
+{
+}
+}
+float X=0;
+float X=X+1;
+void setup(){
+}
+void loop(){
+while(1==1)
+{
+}
+}
+float X=0;
+void setup(){
+}
+void loop(){
+while(1==1)
+{
+}
+}
+void setup(){
+pinMode(5,OUTPUT);
+}
+void loop(){
+digitalWrite(5,HIGH);
+delay(1000);
+digitalWrite(5,LOW);
+delay(1000);
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+analogWrite(A2,127);
+delay(1000);
+}
