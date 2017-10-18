@@ -32,22 +32,27 @@ class mainWindow(Ui_MainWindow):
         interp = IC.interpClass(self.fileName,self.outFileName)
         interp.parseFile(self.outFileName)
         errors = interp.returnErrors()
+        print(errors)
         #interp.writeFile(self.outFileName+".ino")
         if(len(errors)>0):
-            for element in errors:
-                print(errors)
+            self.errorList.addItems(errors)
             self.codeStatus.setText("There was an Error")
             self.codeStatus.setStyleSheet("background-color:red")
             self.runBtn.setChecked(False)
+            interp.clearErrors()
         else:
-            runCode=interp.uploadCode()
-        if(runCode == 0):
-            self.codeStatus.setText("Code has compiled.")
+            self.codeStatus.setText("")
+            self.errorList.clear()
             self.codeStatus.setStyleSheet("background-color:white")
-        else:
-            self.codeStatus.setText("There was an Error")
-            self.codeStatus.setStyleSheet("background-color:red")
-        self.runBtn.setChecked(False)
+            runCode=interp.uploadCode()
+            if(runCode == 0):
+                self.codeStatus.setText("Code has compiled.")
+                self.codeStatus.setStyleSheet("background-color:white")
+                self.runBtn.setChecked(False)
+            else:
+                self.codeStatus.setText("There was an Error")
+                self.codeStatus.setStyleSheet("background-color:red")
+                self.runBtn.setChecked(False)
     def saveFile(self,altFile=None):
         if(altFile==None):
             self.outFileName =QtWidgets.QFileDialog.getSaveFileName(None, 'Save File', EV['HOME']) #open save file dialog at home dir. using os.environ['HOME'] shortened via import

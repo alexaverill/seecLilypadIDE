@@ -21,8 +21,10 @@ class interpClass:
         self.variables = [] #holds all user defined variables to be put into the filename.ino
         self.inFile = inFileName
         self.outFile = outFileName
-    def returnErrors():
-        return self.errorArray;
+    def returnErrors(self):
+        return self.errorArray
+    def clearErrors(self):
+        del self.errorArray[:]
     def stripStr(self,str):
         #take in a str and removes newlines and tabs 
         str = str.replace("\n","")
