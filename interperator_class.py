@@ -245,16 +245,17 @@ class interpClass:
         #check if outputfile is in the correct {NAME}/name.ino format, otherwise create a temp folder and move it
         #('/home/aaverill/RaspberryPiKits/lilypad/UI/testing/testing', 
         # create a temp file to always be used to store the arduino Sketch.
-        file = './temp/temp.ino'
+        piPath='/home/pi/lilypad'
+        file = piPath+'/temp/temp.ino'
         #clear file by writing an empty string. 
-        os.system('echo "" > ./temp/temp.ino')
+        os.system('echo "" > '+piPath+'/temp/temp.ino')
         #now write to the temp file for compilation
         self.writeFile(file)
         #arduinoString = '/usr/share/lilypadide/arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB0 --upload '
         #arduinoString = 'arduino/arduino --board arduino:avr:lilypad:cpu=atmega328 --port /dev/ttyUSB1 --upload '
-        attempt = os.system('cd ./temp/; make;make upload')
+        attempt = os.system('cd '+piPath+'/temp/; make;make upload')
         if(attempt == 1):
-            attempt = attempt = os.system('cd ./temp/; make usb1;make upload')
+            attempt = attempt = os.system('cd '+piPath+'/temp/; make usb1;make upload')
         return attempt
         #return os.system(arduinoString+" ./temp/temp.ino")
 
