@@ -14,13 +14,15 @@ class interpClass:
     digitalStr = "digitalWrite("
     analogStr = "analogWrite("
     endStr = ");"
+    errorArray = []
     def __init__(self,inFileName,outFileName):
         self.instructions=['void loop(){'] # holds all instructions that need to be in loop()
         self.setup = [] #holds everything for the setup()
         self.variables = [] #holds all user defined variables to be put into the filename.ino
         self.inFile = inFileName
         self.outFile = outFileName
-        
+    def returnErrors():
+        return self.errorArray;
     def stripStr(self,str):
         #take in a str and removes newlines and tabs 
         str = str.replace("\n","")
@@ -30,6 +32,9 @@ class interpClass:
         #split the string based on spaces
         string =  self.stripStr(string)
         stringArray = string.split(" ")
+        #clear spaces in case of extra.
+        stringArray[:] =[x for x in stringArray if x != ''] 
+        print(stringArray)
         #print(stringArray)
         #check to make sure that the first element is something we can use
         if(stringArray[0] in self.pinDict):
@@ -64,12 +69,14 @@ class interpClass:
         return str
     def convertConditional(self,str):
         #take in a conditional string split it based on the operator and return a final string to be added to the IF or while statemetns 
+        print(str)
         cond = ["==","!=","<=",">=",">","<"]
         for thing in cond:
             str=str.replace(thing," "+thing+" ")
         strArray = str.split(" ")
         finalArray=[]
         for element in strArray:
+
             if(len(element)>0):
                 if(element in self.pinDict):
                     if(element in self.analogSensors):
@@ -80,12 +87,13 @@ class interpClass:
                         finalArray.append(self.pinDict[element])
                 else:
                     finalArray.append(element)
+
         output=''
         for element in finalArray:
             output+=element
         return output
     def convertTree(self,root):
-        #traverse tree and covert statements to the nessisary C statemetns 
+        #traverse tree and covert statements to the nessisary C statements 
         stack = ''
         if root:
             if(root.operator==True):
@@ -141,8 +149,11 @@ class interpClass:
                 name = parsedArray[1]
                 if(name in self.analogSensors or name in self.digitalSensors):
                     self.setup.append("pinMode("+str(self.pinDict[name])+",INPUT);")
-                else:
+                elif(name in self.pinDict):
                     self.setup.append("pinMode("+str(self.pinDict[name])+",OUTPUT);")
+                else:
+                    self.errorArray.append("Invalid Syntax on line: " + str(lineNumber)+" | "+line)
+                    print("Invalid Syntax on line: " + str(lineNumber)+" | "+line)
             if("VAR" in line):
                 insert = self.parseAssignmentStatement(line)
                 self.variables.append(insert)
@@ -165,17 +176,19 @@ class interpClass:
                 #call parseLine function to get back an array that should have ["LED1","ON"]
                 # the parseLine will also remove \tLED1 in the event that its a nested
                 parsedArray = self.parseLine(line) 
-                if(parsedArray != False):
+                if(parsedArray != False and len(parsedArray)>1):
                     #print(parsedArray)
                     if(parsedArray[1]=="ON"):
                         digtype = "HIGH"
                     elif(parsedArray[1]=="OFF"):
                         digtype = "LOW"
                     else:
+                        self.errorArray.append("Invalid Syntax on line:" + str(lineNumber)+" | "+line)
                         print("Invalid Syntax on line:" + str(lineNumber)+" | "+line)
                         break
                     self.instructions.append(self.digitalStr+str(self.pinDict[parsedArray[0]])+","+digtype+self.endStr)
                 else:
+                    self.errorArray.append("Invalid Syntax on line:" + str(lineNumber)+" | "+line)
                     print("Invalid Syntax on line: " + str(lineNumber)+" | "+line)
             if("WHILE" in line):
                 insert = self.parseConditionalStatement(line)

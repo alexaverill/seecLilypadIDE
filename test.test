@@ -1,3 +1,11 @@
 USE LED3
+LED3  ON
 LED3 50%
 wait
+use buton
+if(temp == 100){
+	led1 on
+}
+if(button == 0){
+	
+}

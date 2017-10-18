@@ -31,6 +31,7 @@ class mainWindow(Ui_MainWindow):
         self.saveFile("./temp/temp.sco")
         interp = IC.interpClass(self.fileName,self.outFileName)
         interp.parseFile(self.outFileName)
+        errors = interp.returnErrors()
         #interp.writeFile(self.outFileName+".ino")
         runCode=interp.uploadCode()
         if(runCode == 0):
