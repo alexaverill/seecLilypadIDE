@@ -34,7 +34,6 @@ class interpClass:
         stringArray = string.split(" ")
         #clear spaces in case of extra.
         stringArray[:] =[x for x in stringArray if x != ''] 
-        print(stringArray)
         #print(stringArray)
         #check to make sure that the first element is something we can use
         if(stringArray[0] in self.pinDict):
@@ -69,7 +68,6 @@ class interpClass:
         return str
     def convertConditional(self,str):
         #take in a conditional string split it based on the operator and return a final string to be added to the IF or while statemetns 
-        print(str)
         cond = ["==","!=","<=",">=",">","<"]
         for thing in cond:
             str=str.replace(thing," "+thing+" ")
@@ -80,7 +78,10 @@ class interpClass:
             if(len(element)>0):
                 if(element in self.pinDict):
                     if(element in self.analogSensors):
-                        finalArray.append("analogRead("+self.pinDict[element]+")")
+                        if(element=='TEMP'):
+                            finalArray.append("(((analogRead("+self.pinDict[element]+")*.00488)-.5)*100)")
+                        else:
+                            finalArray.append("analogRead("+self.pinDict[element]+")")
                     elif(element in self.digitalSensors):
                         finalArray.append("digitalRead("+self.pinDict[element]+")")
                     else:

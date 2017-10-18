@@ -974,3 +974,108 @@ if(analogRead(A5)==0)
 {
 }
 }
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if(analogRead(A1)==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if((((analogRead(A1)*.00488)-.5)*100==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if((((analogRead(A1)*.00488)-.5)*100)==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if((((analogRead(A1)*.00488)-.5)*100)==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if((((analogRead(A1)*.00488)-.5)*100)==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if((((analogRead(A1)*.00488)-.5)*100)==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}
+void setup(){
+pinMode(A2,OUTPUT);
+}
+void loop(){
+digitalWrite(A2,HIGH);
+analogWrite(A2,127);
+delay(1000);
+if((((analogRead(A1)*.00488)-.5)*100)==100)
+{
+digitalWrite(5,HIGH);
+}
+if(analogRead(A5)==0)
+{
+}
+}

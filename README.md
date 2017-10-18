@@ -5,7 +5,8 @@ It allows for a simple language that can be used to help teach programming using
 #Prerequisites
 In addition to the file here it is also nessisary to download a copy of Arduino 1.6.13
 Found here: https://www.arduino.cc/en/Main/OldSoftwareReleases#previous
-
+install pyqt 
+sudo apt-get install pyqt5 pyqt5-dev-tools 
 
 #Language Features
 #Examples:

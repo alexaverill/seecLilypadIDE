@@ -33,7 +33,14 @@ class mainWindow(Ui_MainWindow):
         interp.parseFile(self.outFileName)
         errors = interp.returnErrors()
         #interp.writeFile(self.outFileName+".ino")
-        runCode=interp.uploadCode()
+        if(len(errors)>0):
+            for element in errors:
+                print(errors)
+            self.codeStatus.setText("There was an Error")
+            self.codeStatus.setStyleSheet("background-color:red")
+            self.runBtn.setChecked(False)
+        else:
+            runCode=interp.uploadCode()
         if(runCode == 0):
             self.codeStatus.setText("Code has compiled.")
             self.codeStatus.setStyleSheet("background-color:white")
