@@ -12,8 +12,10 @@ qtCreator
 sudo apt-get install pyqt5 pyqt5-dev-tools qtcreator
 ```
 # Language Features
-# Examples:
+The Lilypad Language was designed to be an easy to use and quick to understand introductory language.  More examples can be found in the Lilypad IDE itself under the help dialog. 
+## Examples:
 Light LED and play an A on the buzzer when button pressed
+```
 USE BUTTON
 USE LED1
 USE BUZZER
@@ -26,3 +28,7 @@ IF(BUTTON == 0){
         BUZZER OFF
         WAIT 150
 }
+```
+
+# Future Work
+There are still things that need to be finished, these are recorded in the github issues, feel free to jump in and work on submiting a pull request to solve any open issues! 
