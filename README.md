@@ -1,15 +1,18 @@
-#SEEC Lilypad IDE
-This is a basic IDE and code translator for the Lilypad Development board by Adafruit. 
-It allows for a simple language that can be used to help teach programming using the Lilypad Wearable Electronics board. 
+# SEEC Lilypad IDE
 
-#Prerequisites
+THe Lilypad IDE is a code editor that uses a custom language to help students starting out program a [Lilypad Arduino Development board](https://www.sparkfun.com/products/11262). It uses a english like language to control each section of the Lilypad Board. It is paired with an instructional guide that walks 
+
+# Prerequisites
 In addition to the file here it is also nessisary to download a copy of Arduino 1.6.13
-Found here: https://www.arduino.cc/en/Main/OldSoftwareReleases#previous
-install pyqt 
-sudo apt-get install pyqt5 pyqt5-dev-tools 
-
-#Language Features
-#Examples:
+Found here: [Arduino 1.6.13](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous)
+Software Packages:
+pyqt
+qtCreator
+```
+sudo apt-get install pyqt5 pyqt5-dev-tools qtcreator
+```
+# Language Features
+# Examples:
 Light LED and play an A on the buzzer when button pressed
 USE BUTTON
 USE LED1
