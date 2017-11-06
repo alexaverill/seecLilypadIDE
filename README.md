@@ -1,5 +1,5 @@
 # SEEC Lilypad IDE
-
+![Lilypad IDE](https://raw.githubusercontent.com/alexaverill/seecLilypadIDE/master/LilypadUpdated.png)
 THe Lilypad IDE is a code editor that uses a custom language to help students starting out program a [Lilypad Arduino Development board](https://www.sparkfun.com/products/11262). It uses a english like language to control each section of the Lilypad Board. It is paired with an instructional guide that walks 
 
 # Prerequisites
