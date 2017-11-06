@@ -203,7 +203,7 @@ p, li { white-space: pre-wrap; }
          <x>0</x>
          <y>0</y>
          <width>464</width>
-         <height>177</height>
+         <height>175</height>
         </rect>
        </property>
        <attribute name="label">
@@ -254,7 +254,7 @@ p, li { white-space: pre-wrap; }
          <x>0</x>
          <y>0</y>
          <width>464</width>
-         <height>177</height>
+         <height>175</height>
         </rect>
        </property>
        <attribute name="label">
@@ -302,7 +302,7 @@ p, li { white-space: pre-wrap; }
          <x>0</x>
          <y>0</y>
          <width>464</width>
-         <height>177</height>
+         <height>175</height>
         </rect>
        </property>
        <attribute name="label">
@@ -361,7 +361,7 @@ p, li { white-space: pre-wrap; }
          <x>0</x>
          <y>0</y>
          <width>464</width>
-         <height>177</height>
+         <height>175</height>
         </rect>
        </property>
        <attribute name="label">
@@ -398,7 +398,7 @@ p, li { white-space: pre-wrap; }
          <x>0</x>
          <y>0</y>
          <width>464</width>
-         <height>177</height>
+         <height>175</height>
         </rect>
        </property>
        <attribute name="label">
@@ -455,9 +455,6 @@ p, li { white-space: pre-wrap; }
       </widget>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QListView" name="errorList"/>
-    </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label">
       <property name="font">
@@ -471,6 +468,9 @@ p, li { white-space: pre-wrap; }
        <string>Errors:</string>
       </property>
      </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QListWidget" name="errorList"/>
     </item>
    </layout>
   </widget>
@@ -491,7 +491,15 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionSave"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuSerial_Montor">
+    <property name="title">
+     <string>Serial &amp;Monitor</string>
+    </property>
+    <addaction name="actionMonitor_Sensors_2"/>
+    <addaction name="actionOpen_Monitor_2"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuSerial_Montor"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">
@@ -507,6 +515,26 @@ p, li { white-space: pre-wrap; }
   <action name="actionAbout">
    <property name="text">
     <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="actionMonitor_Sensors">
+   <property name="text">
+    <string>Monitor Sensors</string>
+   </property>
+  </action>
+  <action name="actionOpen_Monitor">
+   <property name="text">
+    <string>Open Monitor</string>
+   </property>
+  </action>
+  <action name="actionMonitor_Sensors_2">
+   <property name="text">
+    <string>Monitor Sensors</string>
+   </property>
+  </action>
+  <action name="actionOpen_Monitor_2">
+   <property name="text">
+    <string>Open Monitor</string>
    </property>
   </action>
  </widget>
