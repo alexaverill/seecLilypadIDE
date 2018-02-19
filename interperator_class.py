@@ -96,7 +96,7 @@ class interpClass:
             output+=element
         return output
     def convertTree(self,root):
-        #traverse tree and covert statements to the nessisary C statements 
+        #traverse tree and covert statements to the nessisary C statements in a preorder traversal
         stack = ''
         if root:
             if(root.operator==True):
@@ -132,7 +132,8 @@ class interpClass:
                 cleanArray.append(element)
         assignPos = cleanArray.index("=")
         #ADD sanity checks to make sure variables aren't also port names etc
-        outString = "float "+cleanArray[assignPos-1]+"="+cleanArray[assignPos+1]+";"
+        outString = "float "+cleanArray[assignPos-1]+"="+cleanArray[assignPos+1]+";" 
+        # we are always using floats to automatically take care of decimals. Really could improve here
         return outString
     def parseFile(self,inputFile):
         try:
@@ -146,7 +147,7 @@ class interpClass:
         lineNumber = 0 # used to track errors
         for line in inputFile:
             line = line.upper()  #force to be uppercase to make comparison easier
-            if("USE" in line):
+            if("USE" in line): #define what pins we want to use. 
                 parsedArray = self.parseLine(line)
                 #print(parsedArray)
                 name = parsedArray[1]
